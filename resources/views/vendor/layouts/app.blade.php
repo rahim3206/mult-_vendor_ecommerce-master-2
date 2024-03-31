@@ -71,10 +71,10 @@
                         </div>
                         <span class="nav-link-text ms-1">Products</span>
                     </a>
-                    <div class="collapse {{ Request::is('admin/vendors') ? 'show' : '' }} {{ Request::is('admin/vendors/*') ? 'show' : '' }}" id="products" style="">
+                    <div class="collapse {{ Request::is('vendor/product') ? 'show' : '' }} {{ Request::is('vendor/product/*') ? 'show' : '' }}" id="products" style="">
                         <ul class="nav ms-4">
-                            <li class="nav-item {{ Request::is('admin/vendors') ? 'active' : '' }}">
-                                <a class="nav-link " href="{{ route('admin.vendors.index') }}">
+                            <li class="nav-item {{ Request::is('vendor/product') ? 'active' : '' }}">
+                                <a class="nav-link " href="{{ route('vendor.product.index') }}">
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> All Products </span>
                                 </a>
@@ -426,6 +426,8 @@
                 $('.dropify').dropify();
             });
         </script>
+
+        @yield('vendor_script');
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

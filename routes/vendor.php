@@ -30,6 +30,9 @@ Route::prefix('vendor')->middleware('isVendor')->group(function () {
     Route::name('vendor.')->group(function () {
         Route::resource('product',ProductController::class);
         Route::get('get_sub_categories',[ProductController::class,'get_sub_categories'])->name('product.get_sub_categories');
+        Route::get('change_product_status',[ProductController::class,'change_product_status'])->name('product.change_product_status');
+        Route::get('delete_sub_cate_image',[ProductController::class,'delete_sub_cate_image'])->name('product.delete_sub_cate_image');
+
     });
 });
 
