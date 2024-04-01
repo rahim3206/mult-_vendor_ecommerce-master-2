@@ -20,6 +20,8 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('admin_assets/css/argon-dashboard.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/dropify@0.2.2/dist/css/dropify.min.css" rel="stylesheet">
     <style>
         .validated_txt{
             color: red;
@@ -158,6 +160,33 @@
                                 <a class="nav-link " href="{{ route('admin.sub_categories.create') }}">
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> Add Sub Category </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#products" class="nav-link collapsed"
+                        aria-controls="pagesExamples" role="button" aria-expanded="false">
+                        <div
+                            class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                            <i class="fa fa-user text-secondary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Products</span>
+                    </a>
+                    <div class="collapse {{ Request::is('admin/product') ? 'show' : '' }} {{ Request::is('admin/product/*') ? 'show' : '' }}" id="products" style="">
+                        <ul class="nav ms-4">
+                            <li class="nav-item {{ Request::is('admin/product') ? 'active' : '' }}">
+                                <a class="nav-link " href="{{ route('admin.product.index') }}">
+                                    <span class="sidenav-mini-icon"> P </span>
+                                    <span class="sidenav-normal"> All Products </span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{ Request::is('admin/product/create') ? 'active' : '' }} ">
+                                <a class="nav-link " href="{{ route('admin.product.create') }}">
+                                    <span class="sidenav-mini-icon"> S </span>
+                                    <span class="sidenav-normal"> Add Product </span>
                                 </a>
                             </li>
                         </ul>
@@ -462,6 +491,8 @@
     <script src="{{ asset('admin_assets/js/plugins/chartjs.min.js') }}"></script>
     <script src="{{ asset('admin_assets/js/custom.js') }}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dropify@0.2.2/dist/js/dropify.min.js"></script>
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -576,6 +607,14 @@
             }).showToast();
         </script>
         @endsession
+        <script>
+            $(document).ready(function() {
+                $('.summernote').summernote();
+                $('.dropify').dropify();
+            });
+        </script>
+
+        @yield('admin_script')
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

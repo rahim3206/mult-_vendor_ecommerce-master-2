@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Vendor;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductImage;
@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\Vendor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 
@@ -18,9 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $authId = Auth::guard('vendor')->user()->id;
-        $data['products'] = Product::where('vendor_id',$authId)->orderByDesc('id')->simplePaginate(10);
-        return view('vendor.product.index',$data);
+        $data['products'] = Product::orderByDesc('id')->simplePaginate(10);
+        return view('admin.product.index',$data);
     }
 
     /**
@@ -29,7 +29,8 @@ class ProductController extends Controller
     public function create()
     {
         $data['categories'] = Category::all();
-        return view('vendor.product.create',$data);
+        $data['vendors'] = Vendor::all();
+        return view('admin.product.create',$data);
     }
 
     /**
@@ -45,6 +46,7 @@ class ProductController extends Controller
             'category_id'=>'required',
             'sub_category_id'=>'required',
             'status'=>'required',
+            'vendor_id'=>'required',
             'image'=>'required | image',
         ]);
 
@@ -55,7 +57,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->category_id = $request->category_id;
         $product->sub_category_id = $request->sub_category_id;
-        $product->vendor_id = Auth::guard('vendor')->user()->id;
+        $product->vendor_id = $request->vendor_id;
         $product->status = $request->status;
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
@@ -80,7 +82,7 @@ class ProductController extends Controller
            }
         }
 
-        return redirect()->route('vendor.product.index')->with('success','Product Created Successfully!');
+        return redirect()->route('admin.product.index')->with('success','Product Created Successfully!');
     }
 
     /**
@@ -98,7 +100,7 @@ class ProductController extends Controller
     {
         $data['product'] = Product::with('images')->find($id);
         $data['categories'] = Category::all();
-        return view('vendor.product.edit',$data);
+        return view('admin.product.edit',$data);
     }
 
     /**

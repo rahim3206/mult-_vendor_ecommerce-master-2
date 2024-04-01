@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\Setting\GeneralController;
 use App\Http\Controllers\Admin\Setting\SmtpController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -32,6 +33,12 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
 
         //Sub Category Route
         Route::resource('sub_categories', SubCategoryController::class);
+
+        // Product Route
+        Route::resource('product',ProductController::class);
+        Route::get('get_sub_categories',[ProductController::class,'get_sub_categories'])->name('product.get_sub_categories');
+        Route::get('change_product_status',[ProductController::class,'change_product_status'])->name('product.change_product_status');
+        Route::get('delete_sub_cate_image',[ProductController::class,'delete_sub_cate_image'])->name('product.delete_sub_cate_image');
 
 
     });

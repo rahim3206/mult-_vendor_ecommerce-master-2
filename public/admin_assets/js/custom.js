@@ -53,4 +53,37 @@ $(document).ready(function(){
         $(this).closest('.col-md-7').remove();
     });
 
+
+    $(document).on('change','#category_id',function(){
+        const id = $(this).val();
+        const url = $(this).data('url');
+
+        $.ajax({
+            type:"GET",
+            url:url,
+            data:{id:id},
+            success:function(response){
+                $('#sub_category_append').html(response);
+            }
+        });
+    });
+
+    $(document).on('click','.sub_images_delete',function(){
+        const id = $(this).data('id');
+        const url = $(this).data('url');
+        const parent_div = $(this).parent();
+        $.ajax({
+            type:"GET",
+            url:url,
+            data:{id:id},
+            success:function(response)
+            {
+                if(response == 'success')
+                {
+                    $(parent_div).remove();
+                }
+            }
+        });
+    });
+
 });
