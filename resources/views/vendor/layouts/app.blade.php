@@ -293,11 +293,14 @@
                             onclick="darkMode(this)">
                     </div>
                 </div>
+                <form action="{{ route('vendor.logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn bg-gradient-primary w-100">Logout</button>
+                    </form>
             </div>
         </div>
     </div>
     <!--   Core JS Files   -->
-    @livewireScripts
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ asset('admin_assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('admin_assets/js/core/bootstrap.min.js') }}"></script>
@@ -434,6 +437,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('admin_assets/js/argon-dashboard.min.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

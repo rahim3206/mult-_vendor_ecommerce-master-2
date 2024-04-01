@@ -25,7 +25,7 @@ class LoginController extends Controller
         if (Auth::guard('vendor')->attempt($credentials)) {
             return redirect()->intended('vendor/dashboard');
         } else {
-            return redirect()->back()->withInput()->withErrors(['email' => 'Geçersiz kimlik bilgileri']);
+            return redirect()->back()->withInput()->withErrors(['email' => 'Invalid credentials']);
         }
     }
     public function logout(Request $request)
