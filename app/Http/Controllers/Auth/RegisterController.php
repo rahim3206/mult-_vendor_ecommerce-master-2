@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -66,23 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => 0
         ]);
 
-        // $smtp = SmtpSetup::first();
-        // if($smtp && $smtp->status == 1)
-        // {
-        //     $mailData = [
-        //         'title' => 'Mail from Multi Vendor Ecommerce Platform',
-        //         'body' => 'Welcome to our Website.'
-        //     ];
 
-        //     Mail::to($user->email)->send(new UserRegistration($mailData));
-        // }
-            return $user;
     }
 }

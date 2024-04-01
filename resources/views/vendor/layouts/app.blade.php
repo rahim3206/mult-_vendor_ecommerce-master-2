@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/dropify@0.2.2/dist/css/dropify.min.css" rel="stylesheet">
+    @livewireStyles
 
 
     <style>
@@ -54,7 +55,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('vendor/dashboard') ? 'active' : '' }}" href="{{ url('vendor/dashboard') }}">
+                    <a class="nav-link {{ Request::is('vendor/dashboard') ? 'active' : '' }}" href="{{ url('vendor/dashboard') }}" wire:navigate>
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -74,13 +75,13 @@
                     <div class="collapse {{ Request::is('vendor/product') ? 'show' : '' }} {{ Request::is('vendor/product/*') ? 'show' : '' }}" id="products" style="">
                         <ul class="nav ms-4">
                             <li class="nav-item {{ Request::is('vendor/product') ? 'active' : '' }}">
-                                <a class="nav-link " href="{{ route('vendor.product.index') }}">
+                                <a class="nav-link " href="{{ route('vendor.product.index') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> All Products </span>
                                 </a>
                             </li>
                             <li class="nav-item {{ Request::is('vendor/product/create') ? 'active' : '' }} ">
-                                <a class="nav-link " href="{{ route('vendor.product.create') }}">
+                                <a class="nav-link " href="{{ route('vendor.product.create') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> Add Product </span>
                                 </a>
@@ -296,6 +297,7 @@
         </div>
     </div>
     <!--   Core JS Files   -->
+    @livewireScripts
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ asset('admin_assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('admin_assets/js/core/bootstrap.min.js') }}"></script>

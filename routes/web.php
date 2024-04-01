@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/logout', function () {
     return view('welcome');
 });
 
+Route::get('/',[HomeController::class,'index']);
+
 Auth::routes(['verify' => true]);
 
+Route::middleware('verified')->group(function () {
+
+});

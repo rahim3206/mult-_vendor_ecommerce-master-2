@@ -11,7 +11,7 @@
                                 <h6>Products Table</h6>
                             </div>
                             <div>
-                                <a class="btn btn-primary btn-sm" href="{{ route('vendor.product.create') }}"> <i class="fa fa-plus"></i> Add Product</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('vendor.product.create') }}" wire:navigate> <i class="fa fa-plus"></i> Add Product</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                                                 </select>
                                             </td>
                                             <td class="align-middle ">
-                                                <a href="{{ route('vendor.product.edit', $product->id) }}" class="btn text-secondary font-weight-bold text-xs"
+                                                <a href="{{ route('vendor.product.edit', $product->id) }}" wire:navigate class="btn text-secondary font-weight-bold text-xs"
                                                     data-toggle="tooltip" data-original-title="Edit user">
                                                     Edit
                                                 </a>&nbsp;

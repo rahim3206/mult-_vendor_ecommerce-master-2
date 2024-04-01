@@ -42,7 +42,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">From Name</label>
-                    <input class="form-control" required type="text" value="{{ $smtp->smtp_from_name }}" name="smtp_from_name">
+                    <input class="form-control" required type="text" value="{{ $smtp->smtp_from_name ?? "" }}" name="smtp_from_name">
                     @error('smtp_from_name')
                       <span class="validated_txt">{{ $message }}</span>
                     @enderror
@@ -51,7 +51,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">From Email</label>
-                    <input class="form-control" required type="email" value="{{ $smtp->smtp_from_email }}" name="smtp_from_email">
+                    <input class="form-control" required type="email" value="{{ $smtp->smtp_from_email  ?? ""}}" name="smtp_from_email">
                     @error('smtp_from_email')
                       <span class="validated_txt">{{ $message }}</span>
                     @enderror
@@ -60,7 +60,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">SMTP Transport</label>
-                    <input class="form-control" required type="text" value="{{ $smtp->smtp_transport }}" name="smtp_transport">
+                    <input class="form-control" required type="text" value="{{ $smtp->smtp_transport ?? ""}}" name="smtp_transport">
                     @error('smtp_transport')
                       <span class="validated_txt">{{ $message }}</span>
                     @enderror
@@ -69,7 +69,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="example-text-input" class="form-control-label">SMTP Host</label>
-                  <input class="form-control" required type="text" value="{{ $smtp->smtp_host }}" name="smtp_host">
+                  <input class="form-control" required type="text" value="{{ $smtp->smtp_host ?? "" }}" name="smtp_host">
                   @error('smtp_host')
                     <span class="validated_txt">{{ $message }}</span>
                   @enderror
@@ -78,7 +78,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="example-text-input" class="form-control-label">SMTP Port</label>
-                  <input class="form-control" required type="number" value="{{ $smtp->smtp_port }}" name="smtp_port">
+                  <input class="form-control" required type="number" value="{{ $smtp->smtp_port ?? "" }}" name="smtp_port">
                   @error('smtp_port')
                     <span class="validated_txt">{{ $message }}</span>
                   @enderror
@@ -87,7 +87,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="example-text-input" class="form-control-label">SMTP Encyption</label>
-                  <input class="form-control" required type="text" value="{{ $smtp->smtp_encryption }}" name="smtp_encryption">
+                  <input class="form-control" required type="text" value="{{ $smtp->smtp_encryption ?? "" }}" name="smtp_encryption">
                   @error('smtp_encryption')
                     <span class="validated_txt">{{ $message }}</span>
                   @enderror
@@ -96,7 +96,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="example-text-input" class="form-control-label">SMTP Username</label>
-                  <input class="form-control" required type="text" value="{{ $smtp->smtp_username }}" name="smtp_username">
+                  <input class="form-control" required type="text" value="{{ $smtp->smtp_username ?? "" }}" name="smtp_username">
                   @error('smtp_username')
                     <span class="validated_txt">{{ $message }}</span>
                   @enderror
@@ -105,7 +105,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="example-text-input" class="form-control-label">SMTP Password</label>
-                  <input class="form-control" required type="text" value="{{ $smtp->smtp_password }}" name="smtp_password">
+                  <input class="form-control" required type="text" value="{{ $smtp->smtp_password ?? "" }}" name="smtp_password">
                   @error('smtp_password')
                     <span class="validated_txt">{{ $message }}</span>
                   @enderror
@@ -115,8 +115,8 @@
                 <div class="form-group">
                   <label for="example-text-input" class="form-control-label">SMTP Status</label>
                   <select name="status" class="form-control">
-                    <option value="1" {{ $smtp->status == 1 ? 'selected' : '' }}>Enable</option>
-                    <option value="0" {{ $smtp->status == 0 ? 'selected' : '' }}>Disable</option>
+                    <option value="1" {{ $smtp && $smtp->status == 1 ? 'selected' : '' }}>Enable</option>
+                    <option value="0" {{ $smtp && $smtp->status == 0 ? 'selected' : '' }}>Disable</option>
                   </select>
                   @error('status')
                     <span class="validated_txt">{{ $message }}</span>

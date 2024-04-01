@@ -22,23 +22,23 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $smtp = SmtpSetup::first();
-            if($smtp)
-            {
-                $data = [
-                    'transport' => $smtp->smtp_transport,
-                    'host' => $smtp->smtp_host,
-                    'port' => $smtp->smtp_port,
-                    'encryption' => $smtp->smtp_encryption,
-                    'username' => $smtp->smtp_username,
-                    'password' => $smtp->smtp_password,
-                    'from' => [
-                        'name' => $smtp->smtp_from_name,
-                        'address' => $smtp->smtp_from_email
-                    ]
-                ];
-                Config::set('mail', $data);
-            }
+        // $smtp = SmtpSetup::first();
+        //     if($smtp)
+        //     {
+        //         $data = [
+        //             'transport' => $smtp->smtp_transport,
+        //             'host' => $smtp->smtp_host,
+        //             'port' => $smtp->smtp_port,
+        //             'encryption' => $smtp->smtp_encryption,
+        //             'username' => $smtp->smtp_username,
+        //             'password' => $smtp->smtp_password,
+        //             'from' => [
+        //                 'name' => $smtp->smtp_from_name,
+        //                 'address' => $smtp->smtp_from_email
+        //             ]
+        //         ];
+        //         Config::set('mail', $data);
+        //     }
         view()->composer('*', function ($view) {
 
 

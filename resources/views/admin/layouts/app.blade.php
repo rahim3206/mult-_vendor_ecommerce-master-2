@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/dropify@0.2.2/dist/css/dropify.min.css" rel="stylesheet">
+    @livewireStyles
     <style>
         .validated_txt{
             color: red;
@@ -52,7 +53,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" href="{{ url('admin/dashboard') }}">
+                    <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" href="{{ url('admin/dashboard') }}"  wire:navigate>
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -72,13 +73,13 @@
                     <div class="collapse {{ Request::is('admin/vendors') ? 'show' : '' }} {{ Request::is('admin/vendors/*') ? 'show' : '' }}" id="pagesExamples" style="">
                         <ul class="nav ms-4">
                             <li class="nav-item {{ Request::is('admin/vendors') ? 'active' : '' }}">
-                                <a class="nav-link " href="{{ route('admin.vendors.index') }}">
+                                <a class="nav-link " href="{{ route('admin.vendors.index') }}" wire:navigate >
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> All Vendors </span>
                                 </a>
                             </li>
                             <li class="nav-item {{ Request::is('admin/vendors/create') ? 'active' : '' }} ">
-                                <a class="nav-link " href="{{ route('admin.vendors.create') }}">
+                                <a class="nav-link " href="{{ route('admin.vendors.create') }}"  wire:navigate>
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> Create Vendor </span>
                                 </a>
@@ -98,13 +99,13 @@
                     <div class="collapse {{ Request::is('admin/customers') ? 'show' : '' }} {{ Request::is('admin/customers/*') ? 'show' : '' }}" id="Customers" style="">
                         <ul class="nav ms-4">
                             <li class="nav-item {{ Request::is('admin/customers') ? 'active' : '' }}">
-                                <a class="nav-link " href="{{ route('admin.customers.index') }}">
+                                <a class="nav-link " href="{{ route('admin.customers.index') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> All Customers </span>
                                 </a>
                             </li>
                             <li class="nav-item {{ Request::is('admin/customers/create') ? 'active' : '' }} ">
-                                <a class="nav-link " href="{{ route('admin.customers.create') }}">
+                                <a class="nav-link " href="{{ route('admin.customers.create') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> Create Customer </span>
                                 </a>
@@ -125,13 +126,13 @@
                     <div class="collapse {{ Request::is('admin/categories') ? 'show' : '' }} {{ Request::is('admin/categories/*') ? 'show' : '' }}" id="categories" style="">
                         <ul class="nav ms-4">
                             <li class="nav-item {{ Request::is('admin/categories') ? 'active' : '' }}">
-                                <a class="nav-link " href="{{ route('admin.categories.index') }}">
+                                <a class="nav-link " href="{{ route('admin.categories.index') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> All Categories </span>
                                 </a>
                             </li>
                             <li class="nav-item {{ Request::is('admin/categories/create') ? 'active' : '' }} ">
-                                <a class="nav-link " href="{{ route('admin.categories.create') }}">
+                                <a class="nav-link " href="{{ route('admin.categories.create') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> Add Category </span>
                                 </a>
@@ -151,13 +152,13 @@
                     <div class="collapse {{ Request::is('admin/sub_categories') ? 'show' : '' }} {{ Request::is('admin/sub_categories/*') ? 'show' : '' }}" id="sub_categories" style="">
                         <ul class="nav ms-4">
                             <li class="nav-item {{ Request::is('admin/sub_categories') ? 'active' : '' }}">
-                                <a class="nav-link " href="{{ route('admin.sub_categories.index') }}">
+                                <a class="nav-link " href="{{ route('admin.sub_categories.index') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> All Sub Categories </span>
                                 </a>
                             </li>
                             <li class="nav-item {{ Request::is('admin/sub_categories/create') ? 'active' : '' }} ">
-                                <a class="nav-link " href="{{ route('admin.sub_categories.create') }}">
+                                <a class="nav-link " href="{{ route('admin.sub_categories.create') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> Add Sub Category </span>
                                 </a>
@@ -178,13 +179,13 @@
                     <div class="collapse {{ Request::is('admin/product') ? 'show' : '' }} {{ Request::is('admin/product/*') ? 'show' : '' }}" id="products" style="">
                         <ul class="nav ms-4">
                             <li class="nav-item {{ Request::is('admin/product') ? 'active' : '' }}">
-                                <a class="nav-link " href="{{ route('admin.product.index') }}">
+                                <a class="nav-link " href="{{ route('admin.product.index') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> All Products </span>
                                 </a>
                             </li>
                             <li class="nav-item {{ Request::is('admin/product/create') ? 'active' : '' }} ">
-                                <a class="nav-link " href="{{ route('admin.product.create') }}">
+                                <a class="nav-link " href="{{ route('admin.product.create') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> Add Product </span>
                                 </a>
@@ -204,13 +205,13 @@
                     <div class="collapse {{ Request::is('admin/settings/*') ? 'show' : '' }}" id="settings" style="">
                         <ul class="nav ms-4">
                             <li class="nav-item ">
-                                <a class="nav-link {{ Request::is('admin/settings/general') ? 'active' : '' }}" href="{{ route('admin.settings.general') }}">
+                                <a class="nav-link {{ Request::is('admin/settings/general') ? 'active' : '' }}" href="{{ route('admin.settings.general') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> P </span>
                                     <span class="sidenav-normal"> General </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link  {{ Request::is('admin/settings/smtp') ? 'active' : '' }}" href="{{ route('admin.settings.smtp') }}">
+                                <a class="nav-link  {{ Request::is('admin/settings/smtp') ? 'active' : '' }}" href="{{ route('admin.settings.smtp') }}" wire:navigate>
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal"> SMTP Setup </span>
                                 </a>
@@ -483,6 +484,7 @@
         </div>
     </div>
     <!--   Core JS Files   -->
+    @livewireScripts
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ asset('admin_assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('admin_assets/js/core/bootstrap.min.js') }}"></script>
