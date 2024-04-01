@@ -33,11 +33,18 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title'=>'required | unique:categories',
+            'icon'=>'required',
+            'image'=>'required | image',
         ]);
 
 
         $category = new Category();
         $category->title = $request->title;
+        $category->icon = $request->icon;
+        $img = $request->file('image');
+        $ext = rand().".".$img->getClientOriginalName();
+        $img->move("category_image/",$ext);
+        $category->image = $ext;
         $category->save();
         return redirect()->route('admin.categories.index')->with('success', 'Category has been created successfully');
     }
@@ -65,12 +72,26 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title'=>'required | unique:categories',
+            'title'=>'required ',
+            'icon'=>'required',
         ]);
 
 
         $category = Category::find($id);
         $category->title = $request->title;
+        $category->icon = $request->icon;
+        if($request->image)
+        {
+            $mainimagePath = public_path("category_image/{$category->image}");
+            if (file_exists($mainimagePath)) {
+                unlink($mainimagePath);
+            }
+
+            $img = $request->file('image');
+            $ext = rand().".".$img->getClientOriginalName();
+            $img->move("category_image/",$ext);
+            $category->image = $ext;
+        }
         $category->update();
         return redirect()->route('admin.categories.index')->with('success', 'Category has been updated successfully');
     }
@@ -81,6 +102,10 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
+        $mainimagePath = public_path("category_image/{$category->image}");
+        if (file_exists($mainimagePath)) {
+            unlink($mainimagePath);
+        }
         $category->delete();
         return redirect()->back()->with('success', 'Category has been deleted successfully');
     }

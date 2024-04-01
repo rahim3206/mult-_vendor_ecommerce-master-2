@@ -16,11 +16,29 @@
                 @csrf
                 @method('POST')
                 <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Category Image</label>
+                    <input class="form-control dropify" type="file" name="image">
+                    @error('image')
+                        <span class="validated_txt">{{ $message }}</span>
+                    @enderror
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Title</label>
                     <input class="form-control" type="text" placeholder="Category Name" name="title">
                     @error('title')
+                        <span class="validated_txt">{{ $message }}</span>
+                    @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Icon</label>
+                    <input class="form-control" type="text" placeholder="Category Icon" name="icon">
+                    @error('icon')
                         <span class="validated_txt">{{ $message }}</span>
                     @enderror
                     </div>

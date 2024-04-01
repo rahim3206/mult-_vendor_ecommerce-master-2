@@ -9,7 +9,7 @@ class Header extends Component
 {
     public function render()
     {
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::with('sub_categories')->get();
         return view('livewire.frontend.layouts.header',$data);
     }
 }

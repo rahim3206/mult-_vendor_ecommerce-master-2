@@ -32,11 +32,17 @@ $(document).ready(function(){
     $(document).on('click','#add_sub_category',function(){
         // alert('hello');
         var html = '';
-        html += '<div class="col-md-7">';
+        html += '<div class="col-md-12">';
         html += '<div class="form-group">';
         html += '<div class="d-flex">';
-        html += '    <div class="col-md-10">';
+        html += '    <div class="col-md-3">';
         html += '        <input class="form-control" type="text" placeholder="Category Name" name="title[]">';
+        html += '    </div>&nbsp;';
+        html += '    <div class="col-md-3">';
+        html += '        <input class="form-control" type="text" placeholder="Category Icon (eg: flaticon-bag)" name="icon[]">';
+        html += '    </div>&nbsp;';
+        html += '    <div class="col-md-3">';
+        html += '        <input class="form-control" type="file"  name="image[]">';
         html += '    </div>';
         html += '    &nbsp;';
         html += '    <div class="col-md-2">';
@@ -50,7 +56,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click','#remove_sub_category',function(){
-        $(this).closest('.col-md-7').remove();
+        $(this).closest('.col-md-12').remove();
     });
 
 

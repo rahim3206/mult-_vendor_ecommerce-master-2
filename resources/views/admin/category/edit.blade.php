@@ -16,16 +16,34 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Title</label>
-                    <input class="form-control" type="text" placeholder="Category Name" name="title" value="{{ $category->title }}">
-                    @error('title')
-                        <span class="validated_txt">{{ $message }}</span>
-                    @enderror
+                    <div class="col-md-12">
+                        <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Category Image</label>
+                        <input class="form-control dropify" type="file" name="image" data-default-file="{{ asset('category_image'.'/'.$category->image) }}">
+                        @error('image')
+                            <span class="validated_txt">{{ $message }}</span>
+                        @enderror
+                        </div>
                     </div>
-                </div>
-                </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Title</label>
+                            <input class="form-control" type="text" placeholder="Category Name" name="title" value="{{ $category->title }}">
+                            @error('title')
+                                <span class="validated_txt">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Icon <span>(eg: flaticon-smartphone)</span></label>
+                            <input class="form-control" type="text" value="{{ $category->icon }}" name="icon">
+                            @error('icon')
+                                <span class="validated_txt">{{ $message }}</span>
+                            @enderror
+                            </div>
+                        </div>
+                    </div>
               <button class="btn btn-primary btn-sm ms-auto float-end" type="submit">Save</button>
             </form>
           </div>

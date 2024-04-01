@@ -36,13 +36,20 @@ class SubCategoryController extends Controller
 
         $request->validate([
             'title'=>'required',
+            'image'=>'required',
+            'icon'=>'required',
             'category_id'=>'required',
         ]);
-        foreach($request->title as $title)
+        foreach($request->title as $key => $title)
         {
             $sub_category = new SubCategory();
             $sub_category->title = $title;
+            $sub_category->icon = $request->icon[$key];
             $sub_category->category_id = $request->category_id;
+            $img = $request->image[$key];
+            $ext = rand().".".$img->getClientOriginalName();
+            $img->move("category_image/",$ext);
+            $sub_category->image = $ext;
             $sub_category->save();
         }
         return redirect()->route('admin.sub_categories.index')->with('success', 'Sub Category has been created successfully');
@@ -74,12 +81,26 @@ class SubCategoryController extends Controller
         $request->validate([
             'title'=>'required',
             'category_id'=>'required',
+            'icon'=>'required',
         ]);
 
 
         $sub_category = SubCategory::find($id);
         $sub_category->title = $request->title;
         $sub_category->category_id = $request->category_id;
+        $sub_category->icon = $request->icon;
+        if($request->image)
+        {
+            $mainimagePath = public_path("category_image/{$sub_category->image}");
+            if (file_exists($mainimagePath)) {
+                unlink($mainimagePath);
+            }
+
+            $img = $request->file('image');
+            $ext = rand().".".$img->getClientOriginalName();
+            $img->move("category_image/",$ext);
+            $sub_category->image = $ext;
+        }
         $sub_category->update();
         return redirect()->route('admin.sub_categories.index')->with('success', 'Sub Category has been updated successfully');
     }
@@ -90,6 +111,10 @@ class SubCategoryController extends Controller
     public function destroy(string $id)
     {
         $sub_category = SubCategory::find($id);
+        $mainimagePath = public_path("category_image/{$sub_category->image}");
+        if (file_exists($mainimagePath)) {
+            unlink($mainimagePath);
+        }
         $sub_category->delete();
         return redirect()->back()->with('success', 'Sub Category has been deleted successfully');
     }

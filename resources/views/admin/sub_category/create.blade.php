@@ -30,12 +30,18 @@
                         @enderror
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                         <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Title</label>
                         <div class="d-flex">
-                            <div class="col-md-10">
+                            <div class="col-md-3 m">
                                 <input class="form-control" type="text" placeholder="Category Name" name="title[]">
+                            </div>&nbsp;
+                            <div class="col-md-3">
+                                <input class="form-control" type="text" placeholder="Category icon (eg: flaticon-bag)" name="icon[]">
+                            </div>&nbsp;
+                            <div class="col-md-3">
+                                <input class="form-control" type="file" name="image[]">
                             </div>
                             &nbsp;
                             <div class="col-md-2">
