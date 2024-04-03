@@ -11,7 +11,7 @@
                 <div class="col-md-6">
                     <div class="header-top-right">
                         <ul>
-                            <li><a href="become-vendor.html">Become a Vendor</a></li>
+                            <li><a href="{{ route('vendor.register.get') }}" wire:navigate>Become a Vendor</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
                         </ul>
@@ -25,7 +25,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-3">
                     <div class="logo">
-                        <a href="{{ url('/') }}">
+                        <a href="{{ url('/') }}" wire:navigate>
                             @if(isset($settings->site_logo))
                                 <img src="{{ asset('settings/site/'.'/'.$settings->site_logo) }}" alt="{{ $settings->site_name }}">
                             @else
@@ -76,7 +76,7 @@
                     <div class="menu-wrap">
                         <nav class="menu-nav">
                             <div class="logo d-none">
-                                <a href="{{ url('/') }}">
+                                <a href="{{ url('/') }}" wire:navigate>
                                     @if(isset($settings->site_logo))
                                         <img src="{{ asset('settings/site/'.'/'.$settings->site_logo) }}" alt="{{ $settings->site_name }}">
                                     @else
@@ -109,7 +109,7 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
+                                    <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}"  wire:navigate>Home</a></li>
                                     <li class="menu-item-has-children"><a href="#">SHOP</a>
                                         <ul class="submenu">
                                             <li><a href="#">Our Shop</a></li>
@@ -126,7 +126,7 @@
                                     <li><a href="index-3.html">SPECIAL</a></li>
                                     <li class="menu-item-has-children"><a href="#">PAGES</a>
                                         <ul class="submenu">
-                                            <li><a href="become-vendor.html">become a vendor</a></li>
+                                            <li><a href="{{ route('vendor.register.get') }}" wire:navigate>become a vendor</a></li>
                                             <li><a href="vendor-profile.html">vendor Profile</a></li>
                                             <li><a href="vendor-setting.html">vendor setting</a></li>
                                             <li><a href="coupon.html">coupon list</a></li>
@@ -148,7 +148,7 @@
                         <nav class="menu-box">
                             <div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
                             <div class="nav-logo">
-                                <a href="{{ url('/') }}">
+                                <a href="{{ url('/') }}" wire:navigate>
                                     @if(isset($settings->site_logo))
                                         <img src="{{ asset('settings/site/'.'/'.$settings->site_logo) }}" alt="{{ $settings->site_name }}">
                                     @else
